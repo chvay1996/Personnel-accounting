@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Home1
 {
@@ -47,28 +47,28 @@ namespace Home1
                                 AddADossier(ref dossier, ref post);
                                 break;
                             case 1:
-                                dossier = DeleteDossier(ref dossier,ref post);
+                                DeleteDossier(ref dossier, ref post);
                                 break;
                             case 2:
-                                Case2(ref dossier, ref post);
+                                Case2(dossier, post);
                                 break;
                             case 3:
                                 SearchByLastName(ref dossier,ref post);
                                 break;
                             case 4:
-                                exit(launchingTheProgram);
+                                Exit(launchingTheProgram);
                                 break;
                         }
                         break;
                 }
             }
         }
-        private static void Case2(ref string[] dossier, ref string[] post)
+        private static void Case2(string[] dossier, string[] post)
         {
 
             ViewTheDossierOfAll(dossier, post);
             Console.ReadKey();
-            cler();
+            Cler();
         
         }
         static void SearchByLastName(ref string[] arrayDosier,ref string[] arrayPost)
@@ -99,9 +99,9 @@ namespace Home1
             }
 
             Console.ReadKey();
-            cler();
+            Cler();
         }
-        static void exit(bool launchingTheProgram)
+        static void Exit(bool launchingTheProgram)
         {
             Console.Clear();
             launchingTheProgram = false;
@@ -117,14 +117,14 @@ namespace Home1
 
             arrayDossier = copiDossier;
             arrayPost = copiPost;
-            text("Введите Фамилию Имя Отчество", ConsoleColor.Magenta);
+            Text("Введите Фамилию Имя Отчество", ConsoleColor.Magenta);
             copiDossier[arrayDossier.Length - 1] = Console.ReadLine();
-            text("Введите должность", ConsoleColor.Magenta);
+            Text("Введите должность", ConsoleColor.Magenta);
             copiPost[arrayPost.Length - 1] = Console.ReadLine();
 
-            text(("Вы добавели " + (arrayDossier.Length) + ") " + arrayDossier[arrayDossier.Length - 1] + " - " + arrayPost[arrayPost.Length - 1]), ConsoleColor.Cyan);
+            Text(("Вы добавели " + (arrayDossier.Length) + ") " + arrayDossier[arrayDossier.Length - 1] + " - " + arrayPost[arrayPost.Length - 1]), ConsoleColor.Cyan);
             Console.ReadKey();
-            cler();
+            Cler();
         }
         static void ForArrayLenght(int namberArray, int namberI, int arrayFor, string[] arrayDossier, string[] arrayPost, string[] copiDossier, string[] copiPost)
         {
@@ -142,7 +142,7 @@ namespace Home1
             ViewTheDossierOfAll(arrayDossier, arrayPost);
             Console.Write("Введите номер сотрудника, которого вы хотите удалить: ");
             int deleteIndex = Convert.ToInt32(Console.ReadLine());
-            text($"Вы удалили {arrayDossier[deleteIndex - 1]} - {arrayPost[deleteIndex - 1]}", ConsoleColor.Blue);
+            Text($"Вы удалили {arrayDossier[deleteIndex - 1]} - {arrayPost[deleteIndex - 1]}", ConsoleColor.Blue);
 
             ForArrayLenght(0, 0, deleteIndex - 1, arrayDossier, arrayPost, copiDossier, copiPost);
 
@@ -151,7 +151,7 @@ namespace Home1
             arrayDossier = copiDossier;
             arrayPost = copiPost;
             Console.ReadKey();
-            cler();
+            Cler();
             return arrayDossier;
         }
         static void ViewTheDossierOfAll(string[] arrayDossier, string[] arrayPost)
@@ -163,15 +163,15 @@ namespace Home1
                 Console.WriteLine((i + 1) + "." + arrayDossier[i] + " - " + arrayPost[i]);
             }
         }
-        static void text(string message, ConsoleColor color = ConsoleColor.Red)
+        static void Text(string message, ConsoleColor color = ConsoleColor.Red)
         {
-            cler();
+            Cler();
             Console.SetCursorPosition(0, 6);
             Console.ForegroundColor = color;
             Console.WriteLine(message + "\t\t\t\t\t");
             Console.ResetColor();
         }
-        static void cler(int x = 0, int y = 6)
+        static void Cler(int x = 0, int y = 6)
         {
             Console.SetCursorPosition(x, y);
          
